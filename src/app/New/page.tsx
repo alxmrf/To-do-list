@@ -1,8 +1,7 @@
 "use client"
 import { todo } from "node:test"
 import  {useState} from "react"
-"use client"
-import {setCookie} from 'js-cookie'
+
 interface IItem {
     content : string
     marked: boolean
@@ -19,7 +18,8 @@ export default function New() {
                 marked: false
             }]);  console.log(todoList);
     }
-    setCookie("To-do-list-database", todoList)
+    const jsonToDoList = JSON.stringify(todoList)
+    localStorage.setItem("todolist", jsonToDoList)
     return(
         <div className="flex">
             <input type="text " value={inputValue} onChange={(e)=> setInputValue(event.target.value)} />
